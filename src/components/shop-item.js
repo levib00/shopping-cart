@@ -5,19 +5,11 @@ export const ShopItem = (props) => {
   const [total, setTotal] = useState(quantity * props.price)
 
   const incrementQuantity = () => {
-    let newQuantity = 0
-    if (quantity !== '') {
-      newQuantity = parseInt(quantity.valueOf())
-    }    
-    setQuantity(newQuantity + 1)
+    setQuantity(x=> parseInt(x + 1))
   }
 
-  const decrementQuantity = () => {
-    let newQuantity = 0
-    if (quantity !== '') {
-      newQuantity = parseInt(quantity.valueOf())
-    }    
-    setQuantity(newQuantity - 1)
+  const decrementQuantity = () => {  
+    setQuantity(x=> parseInt(x - 1))
   }
 
   useEffect(() => {
@@ -32,8 +24,9 @@ export const ShopItem = (props) => {
         <h2>{props.name}</h2>
         <h2>{props.price}</h2>
       </span>
-      <div>quantity:</div>
+      <label htmlFor='quantity'>quantity:</label>
       <input
+      id="quantity"
       value={quantity}
       onChange={(e) => {
         console.log(e.target.value)
