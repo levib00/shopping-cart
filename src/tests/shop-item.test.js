@@ -59,4 +59,16 @@ describe('Test quantity input', () => {
     const quantity = screen.getByRole('textbox', {name:'quantity:'}).value
     expect(quantity).toBe('0')
   })
+
+  it('prevents quantities more than 25.', () => {
+    render (<ShopItem />)
+    const incrementBtn = screen.getByRole('button', {name: '+'})
+    act(() => {
+      for (let i = 0; i < 30; i++) {
+        userEvent.click(incrementBtn)
+      }
+    });
+    const quantity = screen.getByRole('textbox', {name:'quantity:'}).value
+    expect(quantity).toBe('25')
+  })
 })
