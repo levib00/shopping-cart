@@ -41,7 +41,6 @@ export const ShopItem = (props) => {
       id="quantity"
       value={quantity}
       onChange={(e) => {
-        console.log(e.target.value)
         const re = /^[0-9\b]+$/;
         if ( re.test(e.target.value)) {
           if (parseInt(e.target.value) > 26) {
@@ -51,7 +50,6 @@ export const ShopItem = (props) => {
           } else {
             setQuantity(parseInt(e.target.value))
           }
-           
         } else if (e.target.value === '') {
           setQuantity(e.target.value)
         }
