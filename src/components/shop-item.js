@@ -44,7 +44,14 @@ export const ShopItem = (props) => {
         console.log(e.target.value)
         const re = /^[0-9\b]+$/;
         if ( re.test(e.target.value)) {
-           setQuantity(parseInt(e.target.value))
+          if (parseInt(e.target.value) > 26) {
+            setQuantity(25)
+          } else if (parseInt(e.target.value) < 0) {
+            setQuantity(0)
+          } else {
+            setQuantity(parseInt(e.target.value))
+          }
+           
         } else if (e.target.value === '') {
           setQuantity(e.target.value)
         }
