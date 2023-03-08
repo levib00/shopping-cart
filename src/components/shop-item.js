@@ -5,11 +5,23 @@ export const ShopItem = (props) => {
   const [total, setTotal] = useState(quantity * props.price)
 
   const incrementQuantity = () => {
-    setQuantity(x=> parseInt(x + 1))
+    setQuantity(x => {
+      const newX = parseInt(x + 1)
+      if (newX <= 25) {
+        return newX;
+      }
+      return 25
+    }) 
   }
 
   const decrementQuantity = () => {  
-    setQuantity(x=> parseInt(x - 1))
+    setQuantity(x => {
+      const newX = parseInt(x - 1)
+      if (newX >= 0) {
+        return newX;
+      }
+      return 0
+    }) 
   }
 
   useEffect(() => {
