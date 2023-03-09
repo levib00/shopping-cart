@@ -1,27 +1,18 @@
 import React, {useEffect, useState} from "react";
+import { QuantityInput } from "./quantity-input";
 
 export const ShopItem = (props) => {
   const [quantity, setQuantity] = useState('')
   const [total, setTotal] = useState(quantity * props.price)
 
-  const incrementQuantity = () => {
-    setQuantity(x => {
-      const newX = parseInt(x + 1)
-      if (newX <= 25) {
-        return newX;
-      }
-      return 25
-    }) 
-  }
-
-  const decrementQuantity = () => {  
-    setQuantity(x => {
-      const newX = parseInt(x - 1)
-      if (newX >= 0) {
-        return newX;
-      }
-      return 0
-    }) 
+  const addToCart = () => { // TODO: allow this to update values/ add more items to the same cart item.
+    const newObject = {
+      name: props.name,
+      price: props.price,
+      img: props.img,
+      quantity: quantity
+    }
+    props.setCartItems([...props.cartItems, newObject])
   }
 
   useEffect(() => {
@@ -37,31 +28,11 @@ export const ShopItem = (props) => {
         <h2>{props.price}</h2>
       </span>
       <label htmlFor='quantity'>quantity:</label>
-      <input
-      id="quantity"
-      value={quantity}
-      onChange={(e) => {
-        const re = /^[0-9\b]+$/;
-        if ( re.test(e.target.value)) {
-          if (parseInt(e.target.value) > 26) {
-            setQuantity(25)
-          } else if (parseInt(e.target.value) < 0) {
-            setQuantity(0)
-          } else {
-            setQuantity(parseInt(e.target.value))
-          }
-        } else if (e.target.value === '') {
-          setQuantity(e.target.value)
-        }
-      }}
-      />
-      <button onClick={incrementQuantity}>+</button>
-      <button onClick={decrementQuantity}>-</button>
+      <QuantityInput setQuantity={setQuantity} quantity={quantity}/>
       <div>{`Total :$${total}`}</div>
       <span>
-        <button>Add To Cart</button>
-        <button>Checkout</button>
-        </span>
+        <button onClick={addToCart}>Add To Cart</button>
+      </span>
     </div>
   )
 }
