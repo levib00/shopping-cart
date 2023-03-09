@@ -1,7 +1,10 @@
-import React from "react";
-import { ShopItem } from "./shop-item";
+import React, { useState } from 'react';
+import { ShopItem } from './shop-item';
+import { CartItem } from './cart-item';
 
-export const Shop = () => {
+export const Shop = (props) => {
+  const [cartItems,  setCartItems] = useState([])
+
   const items = [
     {
       name: 'Access Keycard',
@@ -44,7 +47,10 @@ export const Shop = () => {
   return (
     <div>
       <div>
-        {items.map(item => <ShopItem key={item.name} price={item.price} img={item.img} name={item.name}/>)}
+        {items.map(item => <ShopItem cartItems={cartItems} setCartItems={setCartItems} key={item.name} price={item.price} img={item.img} name={item.name}/>)}
+      </div>
+      <div>
+        {cartItems.map(cartItem => <CartItem key={`cart-${cartItem.name}`} thisItem={cartItem} cartItems={cartItems} setCartItems={setCartItems} price={cartItem.price} img={cartItem.img} name={cartItem.name} quantity={cartItem.quantity} />)}
       </div>
     </div>
   )
