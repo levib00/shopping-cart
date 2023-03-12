@@ -6,13 +6,6 @@ import userEvent from "@testing-library/user-event";
 import { QuantityInput } from '../components/quantity-input'
 import { getValue } from "@testing-library/user-event/dist/utils";
 
-describe("Favorite Input", () => {
-  it('description', () => {
-    const formatMock = 0;
-    expect(formatMock).toBeFalsy();
-  });
-});
-
 describe('Test quantity input', () => {
   
   let mockItem = [{
