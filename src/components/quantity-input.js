@@ -13,7 +13,6 @@ export const QuantityInput = (props) => {
     setQuantity = props.setQuantity
   }
   
-
   const incrementQuantity = () => {
     let newQuantity = parseInt(props.quantity + 1)
     if (newQuantity <= 25) {
@@ -28,12 +27,13 @@ export const QuantityInput = (props) => {
     if (newQuantity >= 0) {
       setQuantity(newQuantity);
     } else {
-      setQuantity (0)
+      setQuantity(0)
     }
   }
 
   return (
     <div>
+      <label htmlFor='quantity'>Quantity:</label>
       <input
         id="quantity"
         value={props.quantity}
