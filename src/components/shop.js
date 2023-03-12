@@ -3,14 +3,10 @@ import { ShopItem } from './shop-item';
 import { CartItem } from './cart-item';
 
 export const Shop = (props) => {
-  const [cartItems,  setCartItems] = useState([])
+  const {passedCartItems} = props
+  const [cartItems,  setCartItems] = useState(passedCartItems)
 
   const items = [
-    {
-      name: 'Access Keycard',
-      price: 129.99,
-      img: require('../images/access-card.jpg')
-    },
     {
       name: 'Yellow Keycard',
       price: 1099.99,
@@ -29,28 +25,35 @@ export const Shop = (props) => {
     {
       name: 'Black Keycard',
       price: 999.99,
-      img: require('../images/black-card.jpg')
+      img: require('../images/black-card.jpg'),
     },
     {
       name: 'Blue card',
       price: 1499.99,
-      img: require('../images/blue-card.jpg')
+      img: require('../images/blue-card.jpg'),
     },
     {
       name: 'Red Keycard',
       price: 2199.99,
-      img: require('../images/red-card.jpg')
+      img: require('../images/red-card.jpg'),
     },
   ]
 
-  
+  const renderCart = () => {
+    if (cartItems.length === 0) {
+      return 'Your cart is empty!'
+    } else {
+      return cartItems.map(cartItem => <CartItem key={`cart-${cartItem.name}`} thisItem={cartItem} cartItems={cartItems} setCartItems={setCartItems} price={cartItem.price} img={cartItem.img} name={cartItem.name} quantity={cartItem.quantity} />)
+    }
+  }
+
   return (
     <div>
       <div>
         {items.map(item => <ShopItem cartItems={cartItems} setCartItems={setCartItems} key={item.name} price={item.price} img={item.img} name={item.name}/>)}
       </div>
       <div>
-        {cartItems.map(cartItem => <CartItem key={`cart-${cartItem.name}`} thisItem={cartItem} cartItems={cartItems} setCartItems={setCartItems} price={cartItem.price} img={cartItem.img} name={cartItem.name} quantity={cartItem.quantity} />)}
+        {renderCart()}
       </div>
     </div>
   )
