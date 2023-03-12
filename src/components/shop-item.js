@@ -5,14 +5,24 @@ export const ShopItem = (props) => {
   const [quantity, setQuantity] = useState('')
   const [total, setTotal] = useState(quantity * props.price)
 
-  const addToCart = () => { // TODO: allow this to update values/ add more items to the same cart item.
+  const addToCart = () => {
     const newObject = {
       name: props.name,
       price: props.price,
       img: props.img,
       quantity: quantity
     }
-    props.setCartItems([...props.cartItems, newObject])
+    const index = props.cartItems.findIndex(item => item.name === props.name)
+    if (index > -1) {
+      const cartItemsCopy = [...props.cartItems]
+      cartItemsCopy[index].quantity = parseInt(cartItemsCopy[index].quantity + quantity)
+      if (cartItemsCopy[index].quantity > 25) {
+        cartItemsCopy[index].quantity = 25;
+      } 
+      props.setCartItems(cartItemsCopy)
+    } else {
+      props.setCartItems([...props.cartItems, newObject])
+    }
   }
 
   useEffect(() => {
