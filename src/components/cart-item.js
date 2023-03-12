@@ -1,12 +1,12 @@
 import React from "react";
 import { QuantityInput } from "./quantity-input";
 
-export const CartItem = (props) => {  
+export const CartItem = (props) => {
   return (
     <div>
       <div>
         <div>
-          {props.img}
+          <img src={props.img} alt={props.name}></img>
         </div>
         <div>
           {props.name}
