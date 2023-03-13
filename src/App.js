@@ -8,14 +8,14 @@ import { Shop } from './components/shop'
 const App = () => {
   return (
     <div className="App">
-      <Nav />
       <BrowserRouter>
+        <Nav />
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path="/shop" element={<Shop passedCartItems={[]}/>} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </div>
   );
 }
