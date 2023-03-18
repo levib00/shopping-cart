@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import { QuantityInput } from "./quantity-input";
+import '../styles/styles.css'
 
 export const ShopItem = (props) => {
   const [quantity, setQuantity] = useState('')
-  const [total, setTotal] = useState(quantity * props.price)
 
   const addToCart = () => {
     const newObject = {
@@ -24,25 +24,20 @@ export const ShopItem = (props) => {
       props.setCartItems([...props.cartItems, newObject])
     }
   }
-
-  useEffect(() => {
-    let newTotal = quantity * props.price
-    setTotal(newTotal.toFixed(2))
-  }, [quantity, props.price]);
   
   return (
-    <div>
-      <img src={props.img} alt={props.name}/>
-      <span>
-        <h2>{props.name}</h2>
-        <h2>{props.price}</h2>
-      </span>
-      <label htmlFor='quantity'>quantity:</label>
-      <QuantityInput setQuantity={setQuantity} quantity={quantity}/>
-      <div>{`Total :$${total}`}</div>
-      <span>
-        <button onClick={addToCart}>Add To Cart</button>
-      </span>
+    <div className='item-card'>
+      <img className='item-img' src={props.img} alt={props.name}/>
+      <div className='card-text'>
+        <div>
+          <h2>{props.name}</h2>
+          <h2>{`$ ${props.price}`}</h2>
+        </div>
+        <QuantityInput setQuantity={setQuantity} quantity={quantity}/>
+        <div className='position-cart-btn'>
+          <button className='add-to-cart-btn' onClick={addToCart}>Add To Cart</button>
+        </div>
+      </div>
     </div>
   )
 }
