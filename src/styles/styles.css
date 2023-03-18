@@ -1,0 +1,273 @@
+@font-face {
+  font-family: bombardier;
+  src: url('../assets/fonts/bombardier/BOMBARD_.otf') format("opentype");
+}
+.App {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.header,
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background-color: #ececec;
+  box-shadow: black 0px 0px 4px 1px;
+  z-index: 100;
+  position: relative;
+}
+.hero {
+  font-family: bombardier, sans-serif;
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  color: black;
+  margin-left: 5%;
+  width: 350px;
+}
+.hero-img {
+  height: 70px;
+}
+.route-link-container {
+  list-style: none;
+  display: flex;;
+  justify-content: space-around;
+  margin: 0 25% 0 0;
+  font-size: 20px;
+  height: 70px;
+}
+.route-listing:first-child {
+  border-left: black solid 2px;
+  border-right: black solid 2px;
+}
+.route-listing:last-child {
+  border-left: black solid 2px;
+  border-right: black solid 2px;
+}
+.route-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ececec;
+  height: 100%;
+  width: 140px;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+}
+.route-link, .shop-now {
+  text-decoration: none;
+  color: black;
+}
+.route-button:hover {
+  background-color: black;
+  color: #ececec;
+}
+.main {
+  background-image: url('../assets/images/card-spread.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 785px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.shop-button {
+  width: 130px;
+  height: 60px;
+  background-color: #2e3d70;
+  border: solid black 2px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.text-container {
+  margin-left: 4vw
+}
+.description {
+  font-size: 1.2rem;
+  background-color: #2e3d70;
+  border: black solid 2px;
+  color: white;
+  padding: 10px;
+  width: max-content;
+  margin-top: 0;
+}
+.shop-button:active {
+  color: black;
+}
+.tagline {
+  margin: 0;
+  font-size: 2.2rem;
+  color: white;
+  background-color: #2e3d70;
+  border: black solid 2px;
+  border-bottom: 0 ;
+  width: max-content;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  top: 2px;
+}
+.footer {
+  color:black;
+  justify-content: center;
+  flex-direction: column;
+}
+h3 {
+  margin: 15px 0 0 0;
+}
+.card-grid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat( auto-fill, minmax(300px, 1fr) );
+  row-gap: 100px;
+  column-gap: 100px;
+  background-image: url('../assets/images/FenceFullRes.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x:-600px;
+  background-position-y:center ;
+  padding: 40px;
+}
+.item-card {
+  display: flex;
+  flex-direction: column;
+  border: black solid 1px;
+  background-color: #fff;
+}
+.item-img {
+  width: 100%;
+}
+.shop {
+  display: grid;
+  grid-template-columns: 3.7fr 1.79fr;
+}
+.card-text {
+  margin: 0 0 0 20px;
+}
+.quantity-input {
+  width: 20px;
+  height: 26px;
+  font-size: 16px;
+  border: #aaa solid 1.5px ;
+  border-radius: 0;
+}
+.quantity-container {
+  display: flex;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  height: 24px;
+}
+.quantity-button {
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-size: 16px;
+  color: white;
+  background-color: black;
+}
+.quantity-button:first-child {
+  padding-top: 7px;
+  border-bottom: #fff solid 0.5px;
+}
+.quantity-button:last-child {
+  padding-bottom: 7px;
+  border-top: #fff solid 0.5px;
+}
+.quantity-label {
+  font-size: 20px;
+}
+.cart {
+  border-left: 2px black solid;
+  margin-right: 10px;
+}
+.add-to-cart-btn {
+  border: none;
+  background-color: #000;
+  color: white;
+  height: 35px;
+  width: 110px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.position-cart-btn {
+  margin: 20px 0 20px -20px;
+  display: flex;
+  justify-content: center;
+}
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr 3fr 1fr;
+  font-size: 20px;
+  padding: 5px;
+  align-items: center;
+  justify-items: center;
+}
+.cart-img {
+  height: 80px;
+}
+.cart-price {
+  width: 100px;
+}
+.cart-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  margin: 10px 5px 0 5px;
+}
+.cart-item:nth-child(even) {
+  background-color: #fff;
+}
+.cart-item:nth-child(odd) {
+  background-color: #ccc;
+}
+.remove-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 1000;
+  font-size: 18px;
+  padding: 0 6px 3px 6px;
+  color: white;
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+}
+.checkout-btn {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #000;
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
+}
+.wallet {
+  height: 50px;
+  margin-left: 25px;
+}
+.circle {
+  position: relative;
+  top: 14px;
+  left: -16px;
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  color: black;
+}
+.wallet-button:hover > .wallet {
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
