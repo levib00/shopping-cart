@@ -6,6 +6,9 @@ export const ShopItem = (props) => {
   const [quantity, setQuantity] = useState('')
 
   const addToCart = () => {
+    if (!quantity) {
+      return
+    }
     const newObject = {
       //Duplicates props.cartItems but add quantity.
       name: props.name,
@@ -13,7 +16,7 @@ export const ShopItem = (props) => {
       img: props.img,
       quantity: quantity
     }
-
+   
     const index = props.cartItems.findIndex(item => item.name === props.name)
     //Finds the index of this cart item
     if (index > -1) {
