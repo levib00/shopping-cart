@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ShopItem } from './shop-item';
 import { CartItem } from './cart-item';
+import '../styles/styles.css'
 
 export const Shop = (props) => {
-  const {passedCartItems} = props
-  const [cartItems,  setCartItems] = useState(passedCartItems)
+  const {cartItems, setCartItems} = props
+  
 
   const items = [
+    {
+      name: 'Access Keycard',
+      price: 199.99,
+      img: require('../assets/images/access-card.jpg')
+    },
     {
       name: 'Yellow Keycard',
       price: 1099.99,
@@ -39,20 +45,46 @@ export const Shop = (props) => {
     },
   ]
 
+  const calcTotal = () => {
+    let price = 0;
+    for (let i = 0; i < cartItems.length; i++) {
+      price = price + (cartItems[i].price * cartItems[i].quantity)
+    }
+    return price.toFixed(2)
+  }
+
+  const removeFromCart = (itemName) => {
+    const cartCopy = [...cartItems]
+    const index = cartCopy.findIndex(item => item.name === itemName)
+    const newCart = cartCopy.splice(1, index);
+    setCartItems(newCart)
+  }
+
   const renderCart = () => {
     if (cartItems.length === 0) {
-      return 'Your cart is empty!'
+      return <div className='cart-text'>Your cart is empty!</div>
     } else {
-      return cartItems.map(cartItem => <CartItem key={`cart-${cartItem.name}`} thisItem={cartItem} cartItems={cartItems} setCartItems={setCartItems} price={cartItem.price} img={cartItem.img} name={cartItem.name} quantity={cartItem.quantity} />)
+      return (<div className='cart-item-container'>
+        <div className='cart-text'>Total: $ {calcTotal()} <button className='checkout-btn' onClick={() => alert('Please provide your Terragroup employee number')}>Checkout</button></div>
+        {cartItems.map(cartItem => <CartItem key={`cart-${cartItem.name}`} remove={removeFromCart} thisItem={cartItem} cartItems={cartItems} setCartItems={setCartItems} price={cartItem.price} img={cartItem.img} name={cartItem.name} quantity={cartItem.quantity} />)}
+      </div>)
     }
   }
 
+  useEffect(() => {
+    let cartQuantity = 0
+    for (let i = 0; i < cartItems.length; i++) {
+      cartQuantity = cartQuantity + cartItems[i].quantity
+    }
+    props.setCartQuantity(cartQuantity)
+  })
+
   return (
-    <div>
-      <div>
+    <div className='shop'>
+      <div className='card-grid'>
         {items.map(item => <ShopItem cartItems={cartItems} setCartItems={setCartItems} key={item.name} price={item.price} img={item.img} name={item.name}/>)}
       </div>
-      <div>
+      <div className='cart'>
         {renderCart()}
       </div>
     </div>
