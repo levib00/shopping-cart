@@ -6,7 +6,6 @@ import '../styles/styles.css'
 export const Shop = (props) => {
   const {cartItems, setCartItems} = props
   
-
   const items = [
     {
       name: 'Access Keycard',
@@ -46,6 +45,7 @@ export const Shop = (props) => {
   ]
 
   const calcTotal = () => {
+    // Calculate the total of all items in the cart.
     let price = 0;
     for (let i = 0; i < cartItems.length; i++) {
       price = price + (cartItems[i].price * cartItems[i].quantity)
@@ -54,6 +54,7 @@ export const Shop = (props) => {
   }
 
   const removeFromCart = (itemName) => {
+    // Remove item from cart with a button press.
     const cartCopy = [...cartItems]
     const index = cartCopy.findIndex(item => item.name === itemName)
     const newCart = cartCopy.splice(1, index);
@@ -62,8 +63,10 @@ export const Shop = (props) => {
 
   const renderCart = () => {
     if (cartItems.length === 0) {
+      //If cart is empty, print a message to let the user know
       return <div className='cart-text'>Your cart is empty!</div>
     } else {
+      // if cart has items, render the items.
       return (<div className='cart-item-container'>
         <div className='cart-text'>Total: $ {calcTotal()} <button className='checkout-btn' onClick={() => alert('Please provide your Terragroup employee number')}>Checkout</button></div>
         {cartItems.map(cartItem => <CartItem key={`cart-${cartItem.name}`} remove={removeFromCart} thisItem={cartItem} cartItems={cartItems} setCartItems={setCartItems} price={cartItem.price} img={cartItem.img} name={cartItem.name} quantity={cartItem.quantity} />)}
@@ -72,6 +75,7 @@ export const Shop = (props) => {
   }
 
   useEffect(() => {
+    //Calculates the total number of items in the cart.
     let cartQuantity = 0
     for (let i = 0; i < cartItems.length; i++) {
       cartQuantity = cartQuantity + cartItems[i].quantity

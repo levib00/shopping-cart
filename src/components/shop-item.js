@@ -7,13 +7,17 @@ export const ShopItem = (props) => {
 
   const addToCart = () => {
     const newObject = {
+      //Duplicates props.cartItems but add quantity.
       name: props.name,
       price: props.price,
       img: props.img,
       quantity: quantity
     }
+
     const index = props.cartItems.findIndex(item => item.name === props.name)
+    //Finds the index of this cart item
     if (index > -1) {
+      //If the item is already in the cart, change the quantity value.
       const cartItemsCopy = [...props.cartItems]
       cartItemsCopy[index].quantity = parseInt(cartItemsCopy[index].quantity + quantity)
       if (cartItemsCopy[index].quantity > 25) {
@@ -21,6 +25,7 @@ export const ShopItem = (props) => {
       } 
       props.setCartItems(cartItemsCopy)
     } else {
+      //If the item is not in the cart, add it to the cart.
       props.setCartItems([...props.cartItems, newObject])
     }
   }

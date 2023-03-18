@@ -2,9 +2,10 @@ import React from "react";
 import { QuantityInput } from "./quantity-input";
 
 export const CartItem = (props) => {
+  //Add info of item to cart section.
   return (
     <div className='cart-item'>
-      <img className='cart-img' src={props.img} alt={props.name}></img>
+      <img className='cart-img' src={props.img} alt={props.name}></img> 
       <div>
         {props.name}
       </div>

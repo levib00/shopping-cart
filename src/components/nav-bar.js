@@ -20,7 +20,7 @@ export const Nav = (props) => {
           <Link className="route-link" to='/shop'><button className="route-button">Shop</button></Link>
         </li>
         <li className="route-listing">
-        <Link className="route-link" to='/shop'>
+        <Link className="route-link" to='/shop'> {/*Stand in for cart routes to shop and cart page*/}
           <button className="route-button wallet-button">
             <img className='wallet' src={wallet} alt='cart'></img>
             <div className='circle'>{props.cartQuantity}</div>
