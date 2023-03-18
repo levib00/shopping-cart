@@ -32,9 +32,10 @@ export const QuantityInput = (props) => {
   }
 
   return (
-    <div>
-      <label htmlFor='quantity'>Quantity:</label>
+    <div className='quantity-container'>
+      <label className='quantity-label' htmlFor='quantity'>Quantity:</label>
       <input
+        className='quantity-input'
         id="quantity"
         value={props.quantity}
         onChange={(e) => {
@@ -52,8 +53,10 @@ export const QuantityInput = (props) => {
           }
         }}
       />
-      <button onClick={incrementQuantity}>+</button>
-      <button onClick={decrementQuantity}>-</button>
+      <div className='button-container'>
+        <button className='quantity-button' onClick={incrementQuantity}>⌃</button>
+        <button className='quantity-button' onClick={decrementQuantity}>⌄</button>
+      </div>
     </div>
   )
 }
