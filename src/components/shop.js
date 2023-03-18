@@ -57,8 +57,8 @@ export const Shop = (props) => {
     // Remove item from cart with a button press.
     const cartCopy = [...cartItems]
     const index = cartCopy.findIndex(item => item.name === itemName)
-    const newCart = cartCopy.splice(1, index);
-    setCartItems(newCart)
+    cartCopy.splice(index, 1);
+    setCartItems(cartCopy)
   }
 
   const renderCart = () => {
